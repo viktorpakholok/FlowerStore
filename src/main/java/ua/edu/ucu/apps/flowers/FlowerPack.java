@@ -17,7 +17,7 @@ public class FlowerPack {
         return flower.getPrice() * quantity;
     }
 
-    public boolean matches(FlowerSpec flowerSpec){
+    public boolean matches(FlowerSpec flowerSpec) {
         if (flower.matches(flowerSpec)) {
             return true;
         }

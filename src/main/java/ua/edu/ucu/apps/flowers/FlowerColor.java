@@ -13,7 +13,7 @@ public enum FlowerColor {
         return rgb.toString();
     }
 
-    public static FlowerColor getColor(String flowerColor){
+    public static FlowerColor getColor(String flowerColor) {
         for (FlowerColor color : FlowerColor.values()) {
             if (color.rgb.equalsIgnoreCase(flowerColor)) {
                 return color;

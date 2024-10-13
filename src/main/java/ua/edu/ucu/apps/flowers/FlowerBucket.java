@@ -22,9 +22,9 @@ public class FlowerBucket {
         return price;
     }
 
-    public boolean search(FlowerSpec flowerSpec){
+    public boolean search(FlowerSpec flowerSpec) {
         for (FlowerPack flowerPack : flowerPacks) {
-            if (flowerPack.matches(flowerSpec)){
+            if (flowerPack.matches(flowerSpec)) {
                 return true;
             }
         }

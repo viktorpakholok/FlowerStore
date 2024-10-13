@@ -8,11 +8,12 @@ import lombok.ToString;
 public class Flower extends FlowerSpec {
     private double price;
 
-    public Flower(){}
+    public Flower() { 
 
-    public Flower(double price, FlowerColor color, int sepalLength, FlowerType flowerType){
+    }
+
+    public Flower(double price, FlowerColor color, int sepalLength, FlowerType flowerType) {
         super(color, sepalLength, flowerType);
-        System.out.println(getColor() + ", " + getSepalLength() + ", " + getFlowerType());
         this.price = price;
     }
 

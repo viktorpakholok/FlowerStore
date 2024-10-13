@@ -12,6 +12,12 @@ import org.junit.jupiter.api.Assertions;
 public class FlowerTest {
     private static final Random RANDOM_GENERATOR = new Random();
     private static final int MAX_PRICE = 100;
+    private static final int TEST_PRICE = 50;
+    private static final int TEST_SEPAL_LENGTH = 15;
+    private static final int DEFAULT_SEPAL_LENGTH = 10;
+    private static final String GREEN_RGB = "#00FF00";
+    private static final String INVALID_RGB = "#123456";
+
     private Flower flower;
 
     @BeforeEach
@@ -23,70 +29,100 @@ public class FlowerTest {
     public void testPrice() {
         int price = RANDOM_GENERATOR.nextInt(MAX_PRICE);
         flower.setPrice(price);
-        Assertions.assertEquals(price, flower.getPrice(), "Price did not match");
+        Assertions.assertEquals(
+            price, flower.getPrice(), 
+            "Price did not match"
+        );
     }
 
     @Test
     public void testColor() {
         FlowerColor color = FlowerColor.RED;
         flower.setColor(color);
-        Assertions.assertEquals("#FF0000", flower.getColor(), "Color did not match");
+        Assertions.assertEquals(
+            "#FF0000", flower.getColor(), 
+            "Color did not match"
+        );
     }
 
     @Test
     public void testSepalLength() {
-        int sepalLength = 15;
-        flower.setSepalLength(sepalLength);
-        Assertions.assertEquals(sepalLength, flower.getSepalLength(), "Sepal length did not match");
+        flower.setSepalLength(TEST_SEPAL_LENGTH);
+        Assertions.assertEquals(
+            TEST_SEPAL_LENGTH, flower.getSepalLength(), 
+            "Sepal length did not match"
+        );
     }
 
     @Test
     public void testCopyConstructor() {
-        flower.setPrice(50);
+        flower.setPrice(TEST_PRICE);
         flower.setColor(FlowerColor.BLUE);
-        flower.setSepalLength(10);
+        flower.setSepalLength(DEFAULT_SEPAL_LENGTH);
 
         Flower copiedFlower = new Flower(flower);
-        Assertions.assertEquals(flower.getPrice(), copiedFlower.getPrice(), "Price mismatch in copy constructor");
-        Assertions.assertEquals(flower.getColor(), copiedFlower.getColor(), "Color mismatch in copy constructor");
-        Assertions.assertEquals(flower.getSepalLength(), copiedFlower.getSepalLength(), "Sepal length mismatch in copy constructor");
+        Assertions.assertEquals(
+            flower.getPrice(), copiedFlower.getPrice(), 
+            "Price mismatch in copy constructor"
+        );
+        Assertions.assertEquals(
+            flower.getColor(), copiedFlower.getColor(), 
+            "Color mismatch in copy constructor"
+        );
+        Assertions.assertEquals(
+            flower.getSepalLength(), copiedFlower.getSepalLength(), 
+            "Sepal length mismatch in copy constructor"
+        );
     }
 
     @Test
     public void testMatches() {
-        FlowerSpec spec = new FlowerSpec(FlowerColor.RED, 10, null);
+        FlowerSpec spec = new FlowerSpec(FlowerColor.RED, DEFAULT_SEPAL_LENGTH, null);
         flower.setColor(FlowerColor.RED);
-        flower.setSepalLength(10);
+        flower.setSepalLength(DEFAULT_SEPAL_LENGTH);
 
-        Assertions.assertTrue(flower.matches(spec), "Flower should match the spec");
+        Assertions.assertTrue(
+            flower.matches(spec), 
+            "Flower should match the spec"
+        );
     }
 
     @Test
     public void testDoesNotMatch() {
-        FlowerSpec spec = new FlowerSpec(FlowerColor.RED, 15, null);
+        FlowerSpec spec = new FlowerSpec(FlowerColor.RED, TEST_SEPAL_LENGTH, null);
         flower.setColor(FlowerColor.BLUE);
-        flower.setSepalLength(10);
+        flower.setSepalLength(DEFAULT_SEPAL_LENGTH);
 
-        Assertions.assertFalse(flower.matches(spec), "Flower should not match the spec");
+        Assertions.assertFalse(
+            flower.matches(spec), 
+            "Flower should not match the spec"
+        );
     }
 
     @Test
     public void testGetColorFromRGB() {
-        FlowerColor color = FlowerColor.getColor("#00FF00");
-        Assertions.assertEquals(FlowerColor.GREEN, color, "Color mismatch for RGB #00FF00");
+        FlowerColor color = FlowerColor.getColor(GREEN_RGB);
+        Assertions.assertEquals(
+            FlowerColor.GREEN, color, 
+            "Color mismatch for RGB #00FF00"
+        );
     }
 
     @Test
     public void testGetColorFromRGBInvalid() {
-        Assertions.assertThrows(IllegalArgumentException.class, 
-            () -> FlowerColor.getColor("#123456"), 
-            "Expected exception for unknown RGB code");
+        Assertions.assertThrows(
+            IllegalArgumentException.class, 
+            () -> FlowerColor.getColor(INVALID_RGB), 
+            "Expected exception for unknown RGB code"
+        );
     }
 
     @Test
     public void testInvalidRGBFormat() {
-        Assertions.assertThrows(IllegalArgumentException.class, 
+        Assertions.assertThrows(
+            IllegalArgumentException.class, 
             () -> FlowerColor.getColor("00FF00"), 
-            "Expected exception for missing '#' in RGB code");
+            "Expected exception for missing '#' in RGB code"
+        );
     }
 }

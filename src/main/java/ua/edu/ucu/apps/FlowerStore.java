@@ -9,7 +9,7 @@ import ua.edu.ucu.apps.flowers.FlowerSpec;
 public class FlowerStore {
     private List<FlowerBucket> flowerBuckets;
 
-    public FlowerStore(){
+    public FlowerStore() {
         flowerBuckets = new ArrayList<>();
     }
 
@@ -17,12 +17,10 @@ public class FlowerStore {
         flowerBuckets.add(flowerBucket);
     }
 
-    public List<FlowerBucket> search(FlowerSpec flowerSpec){
+    public List<FlowerBucket> search(FlowerSpec flowerSpec) {
         List<FlowerBucket> resFlowerBuckets = new ArrayList<>();
-        System.out.println(flowerBuckets);
         for (FlowerBucket flowerBucket : flowerBuckets) {
-            System.out.println(flowerBucket);
-            if (flowerBucket.search(flowerSpec)){
+            if (flowerBucket.search(flowerSpec)) {
                 resFlowerBuckets.add(flowerBucket);
             }
         }
