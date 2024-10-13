@@ -19,9 +19,12 @@ public class FlowerBucketTest {
     private static final int TEST_QUANTITY_ONE = 5;
     private static final int TEST_PRICE_TWO = 20;
     private static final int TEST_QUANTITY_TWO = 3;
+    private static final int TEST_PRICE_THREE = 50;
     private static final int NEGATIVE_QUANTITY = -5;
     private static final int TEST_QUANTITY = 10;
     private static final int DEFAULT_SEPAL_LENGTH = 10;
+    private static final int SEPAL_LENGTH_ONE = 9;
+    
 
     private FlowerBucket flowerBucket;
 
@@ -49,20 +52,29 @@ public class FlowerBucketTest {
 
     @Test
     public void testMultipleFlowerPacksPrice() {
-        Flower flower1 = new Flower(
-            TEST_PRICE_ONE, FlowerColor.GREEN, DEFAULT_SEPAL_LENGTH, FlowerType.CHAMOMILE
+        Flower flowerOne = new Flower(
+            TEST_PRICE_ONE, 
+            FlowerColor.GREEN, 
+            DEFAULT_SEPAL_LENGTH, 
+            FlowerType.CHAMOMILE
         );
-        FlowerPack flowerPack1 = new FlowerPack(flower1, TEST_QUANTITY_ONE);
+        FlowerPack flowerPackOne = new FlowerPack(
+            flowerOne, TEST_QUANTITY_ONE);
 
-        Flower flower2 = new Flower(
-            TEST_PRICE_TWO, FlowerColor.BLUE, DEFAULT_SEPAL_LENGTH, FlowerType.TULIP
+        Flower flowerTwo = new Flower(
+            TEST_PRICE_TWO, 
+            FlowerColor.BLUE, 
+            DEFAULT_SEPAL_LENGTH, 
+            FlowerType.TULIP
         );
-        FlowerPack flowerPack2 = new FlowerPack(flower2, TEST_QUANTITY_TWO);
+        FlowerPack flowerPackTwo = new FlowerPack(
+            flowerTwo, TEST_QUANTITY_TWO);
 
-        flowerBucket.add(flowerPack1);
-        flowerBucket.add(flowerPack2);
+        flowerBucket.add(flowerPackOne);
+        flowerBucket.add(flowerPackTwo);
 
-        int expectedPrice = (TEST_PRICE_ONE * TEST_QUANTITY_ONE) + (TEST_PRICE_TWO * TEST_QUANTITY_TWO);
+        int expectedPrice = (TEST_PRICE_ONE * TEST_QUANTITY_ONE) 
+        + (TEST_PRICE_TWO * TEST_QUANTITY_TWO);
         Assertions.assertEquals(
             expectedPrice, flowerBucket.getPrice(),
             "Incorrect total price for multiple flower packs"
@@ -80,7 +92,7 @@ public class FlowerBucketTest {
     @Test
     public void testZeroQuantityFlowerPack() {
         Flower flower = new Flower(
-            50, FlowerColor.YELLOW, 2, FlowerType.ROSE
+            TEST_PRICE_THREE, FlowerColor.YELLOW, 2, FlowerType.ROSE
         );
         FlowerPack flowerPack = new FlowerPack(flower, 0);
         flowerBucket.add(flowerPack);
@@ -94,7 +106,7 @@ public class FlowerBucketTest {
     @Test
     public void testNegativeQuantityThrowsException() {
         Flower flower = new Flower(
-            50, FlowerColor.WHITE, 9, FlowerType.ROSE
+            TEST_PRICE_THREE, FlowerColor.WHITE, SEPAL_LENGTH_ONE, FlowerType.ROSE
         );
 
         Assertions.assertThrows(
