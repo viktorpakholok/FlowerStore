@@ -12,4 +12,14 @@ public enum FlowerColor {
     public String toString() {
         return rgb.toString();
     }
+
+    public static FlowerColor getColor(String flowerColor){
+        for (FlowerColor color : FlowerColor.values()) {
+            if (color.rgb.equalsIgnoreCase(flowerColor)) {
+                return color;
+            }
+        }
+
+        throw new IllegalArgumentException("Unknown RGB code: " + flowerColor);
+    }
 }
