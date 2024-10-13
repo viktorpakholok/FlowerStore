@@ -106,7 +106,10 @@ public class FlowerBucketTest {
     @Test
     public void testNegativeQuantityThrowsException() {
         Flower flower = new Flower(
-            TEST_PRICE_THREE, FlowerColor.WHITE, SEPAL_LENGTH_ONE, FlowerType.ROSE
+            TEST_PRICE_THREE, 
+            FlowerColor.WHITE, 
+            SEPAL_LENGTH_ONE, 
+            FlowerType.ROSE
         );
 
         Assertions.assertThrows(
