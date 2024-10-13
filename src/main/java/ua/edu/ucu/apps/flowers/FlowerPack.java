@@ -6,6 +6,9 @@ public class FlowerPack {
     private Flower flower;
 
     public FlowerPack(Flower flower, int quantity) {
+        if (quantity < 0) {
+            throw new IllegalArgumentException("Quantity cannot be negative");
+        }
         this.flower = new Flower(flower);
         this.quantity = quantity;
     }
