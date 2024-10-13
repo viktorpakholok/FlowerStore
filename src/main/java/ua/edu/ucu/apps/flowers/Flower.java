@@ -12,7 +12,11 @@ public class Flower extends FlowerSpec {
 
     }
 
-    public Flower(double price, FlowerColor color, int sepalLength, FlowerType flowerType) {
+    public Flower(
+        double price, 
+        FlowerColor color, 
+        int sepalLength, 
+        FlowerType flowerType) {
         super(color, sepalLength, flowerType);
         this.price = price;
     }
@@ -25,7 +29,7 @@ public class Flower extends FlowerSpec {
         setFlowerType(flower.getFlowerType());
     }
 
-    public boolean matches(FlowerSpec flowerSpec){
+    public boolean matches(FlowerSpec flowerSpec) {
         return super.matches(flowerSpec);
     }
 }

@@ -77,7 +77,8 @@ public class FlowerTest {
 
     @Test
     public void testMatches() {
-        FlowerSpec spec = new FlowerSpec(FlowerColor.RED, DEFAULT_SEPAL_LENGTH, null);
+        FlowerSpec spec = new FlowerSpec(
+            FlowerColor.RED, DEFAULT_SEPAL_LENGTH, null);
         flower.setColor(FlowerColor.RED);
         flower.setSepalLength(DEFAULT_SEPAL_LENGTH);
 
@@ -89,7 +90,8 @@ public class FlowerTest {
 
     @Test
     public void testDoesNotMatch() {
-        FlowerSpec spec = new FlowerSpec(FlowerColor.RED, TEST_SEPAL_LENGTH, null);
+        FlowerSpec spec = new FlowerSpec(
+            FlowerColor.RED, TEST_SEPAL_LENGTH, null);
         flower.setColor(FlowerColor.BLUE);
         flower.setSepalLength(DEFAULT_SEPAL_LENGTH);
 

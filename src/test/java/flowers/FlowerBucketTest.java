@@ -15,10 +15,10 @@ public class FlowerBucketTest {
     private static final int MAX_QUANTITY = 1000;
     private static final int MAX_PRICE = 100;
 
-    private static final int PRICE_1 = 10;
-    private static final int QUANTITY_1 = 5;
-    private static final int PRICE_2 = 20;
-    private static final int QUANTITY_2 = 3;
+    private static final int TEST_PRICE_ONE = 10;
+    private static final int TEST_QUANTITY_ONE = 5;
+    private static final int TEST_PRICE_TWO = 20;
+    private static final int TEST_QUANTITY_TWO = 3;
     private static final int NEGATIVE_QUANTITY = -5;
     private static final int TEST_QUANTITY = 10;
     private static final int DEFAULT_SEPAL_LENGTH = 10;
@@ -50,19 +50,19 @@ public class FlowerBucketTest {
     @Test
     public void testMultipleFlowerPacksPrice() {
         Flower flower1 = new Flower(
-            PRICE_1, FlowerColor.GREEN, DEFAULT_SEPAL_LENGTH, FlowerType.CHAMOMILE
+            TEST_PRICE_ONE, FlowerColor.GREEN, DEFAULT_SEPAL_LENGTH, FlowerType.CHAMOMILE
         );
-        FlowerPack flowerPack1 = new FlowerPack(flower1, QUANTITY_1);
+        FlowerPack flowerPack1 = new FlowerPack(flower1, TEST_QUANTITY_ONE);
 
         Flower flower2 = new Flower(
-            PRICE_2, FlowerColor.BLUE, 5, FlowerType.TULIP
+            TEST_PRICE_TWO, FlowerColor.BLUE, DEFAULT_SEPAL_LENGTH, FlowerType.TULIP
         );
-        FlowerPack flowerPack2 = new FlowerPack(flower2, QUANTITY_2);
+        FlowerPack flowerPack2 = new FlowerPack(flower2, TEST_QUANTITY_TWO);
 
         flowerBucket.add(flowerPack1);
         flowerBucket.add(flowerPack2);
 
-        int expectedPrice = (PRICE_1 * QUANTITY_1) + (PRICE_2 * QUANTITY_2);
+        int expectedPrice = (TEST_PRICE_ONE * TEST_QUANTITY_ONE) + (TEST_PRICE_TWO * TEST_QUANTITY_TWO);
         Assertions.assertEquals(
             expectedPrice, flowerBucket.getPrice(),
             "Incorrect total price for multiple flower packs"
