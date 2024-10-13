@@ -21,6 +21,15 @@ public class FlowerBucket {
         }
         return price;
     }
+
+    public boolean search(FlowerSpec flowerSpec){
+        for (FlowerPack flowerPack : flowerPacks) {
+            if (flowerPack.matches(flowerSpec)){
+                return true;
+            }
+        }
+        return false;
+    }
 }
 
 // Закон Деметри не використовувати дві "." (a.m().n() bad)

@@ -13,4 +13,11 @@ public class FlowerPack {
     public double getPrice() {
         return flower.getPrice() * quantity;
     }
+
+    public boolean matches(FlowerSpec flowerSpec){
+        if (flower.matches(flowerSpec)) {
+            return true;
+        }
+        return false;
+    }
 }

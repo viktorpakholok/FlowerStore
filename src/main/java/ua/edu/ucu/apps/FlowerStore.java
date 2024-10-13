@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ua.edu.ucu.apps.flowers.FlowerBucket;
+import ua.edu.ucu.apps.flowers.FlowerSpec;
 
 public class FlowerStore {
     private List<FlowerBucket> flowerBuckets;
@@ -16,11 +17,15 @@ public class FlowerStore {
         flowerBuckets.add(flowerBucket);
     }
 
-    public FlowerBucket search(){
+    public List<FlowerBucket> search(FlowerSpec flowerSpec){
+        List<FlowerBucket> resFlowerBuckets = new ArrayList<>();
+        System.out.println(flowerBuckets);
         for (FlowerBucket flowerBucket : flowerBuckets) {
-            // System.out.println(flowerBucket);
-            // some realisation
+            System.out.println(flowerBucket);
+            if (flowerBucket.search(flowerSpec)){
+                resFlowerBuckets.add(flowerBucket);
+            }
         }
-        return new FlowerBucket();
+        return resFlowerBuckets;
     }
 }

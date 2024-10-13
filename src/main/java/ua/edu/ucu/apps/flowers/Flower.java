@@ -1,28 +1,30 @@
 package ua.edu.ucu.apps.flowers;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@Getter @Setter @ToString @AllArgsConstructor @NoArgsConstructor
-public class Flower {
-    private FlowerColor color;
-    private int sepalLength;
+@Getter @Setter @ToString
+public class Flower extends FlowerSpec {
     private double price;
-    private FlowerType flowerType;
 
+    public Flower(){}
+
+    public Flower(double price, FlowerColor color, int sepalLength, FlowerType flowerType){
+        super(color, sepalLength, flowerType);
+        System.out.println(getColor() + ", " + getSepalLength() + ", " + getFlowerType());
+        this.price = price;
+    }
 
     // copy constructor
     public Flower(Flower flower) {
-        color = flower.color;
-        sepalLength = flower.sepalLength;
         price = flower.price;
-        flowerType = flower.flowerType;
+        setColor(FlowerColor.getColor(flower.getColor()));
+        setSepalLength(flower.getSepalLength());
+        setFlowerType(flower.getFlowerType());
     }
 
-    public String getColor() {
-        return color.toString();
+    public boolean matches(FlowerSpec flowerSpec){
+        return super.matches(flowerSpec);
     }
 }
